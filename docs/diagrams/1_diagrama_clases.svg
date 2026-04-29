@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="750" viewBox="0 0 1050 750">
+  <defs>
+    <style>
+      .class-box { fill: #f8f9fa; stroke: #2c3e50; stroke-width: 1.5; rx: 4; }
+      .class-header { fill: #e8ecef; }
+      .class-title { font: bold 14px sans-serif; fill: #2c3e50; text-anchor: middle; }
+      .class-text { font: 12px monospace; fill: #333; }
+      .line { stroke: #2c3e50; stroke-width: 1.5; fill: none; }
+      .arrow { stroke: #2c3e50; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+      .dashed { stroke-dasharray: 5,5; }
+      .relation-text { font: italic 11px sans-serif; fill: #555; }
+      .pkg-title { font: bold 16px sans-serif; fill: #7f8c8d; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50" />
+    </marker>
+    <!-- Triangle for Inheritance = Open Arrow -->
+    <marker id="inheritance" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+      <polygon points="12 0, 0 6, 12 12" fill="white" stroke="#2c3e50" stroke-width="1.5" />
+    </marker>
+    <!-- Diamond for Composition/Aggregation -->
+    <marker id="composition" markerWidth="14" markerHeight="10" refX="14" refY="5" orient="auto">
+      <polygon points="0 5, 7 0, 14 5, 7 10" fill="#2c3e50" stroke="#2c3e50" stroke-width="1.5" />
+    </marker>
+    <marker id="aggregation" markerWidth="14" markerHeight="10" refX="14" refY="5" orient="auto">
+      <polygon points="0 5, 7 0, 14 5, 7 10" fill="white" stroke="#2c3e50" stroke-width="1.5" />
+    </marker>
+  </defs>
+
+  <rect x="10" y="10" width="1030" height="730" fill="#ffffff" />
+  
+  <text class="pkg-title" x="40" y="40">Diagrama de Clases (UML) - Hosting VPS</text>
+
+  <!-- MODELS PACKAGE -->
+  <rect x="40" y="70" width="700" height="400" fill="#fcfcfc" stroke="#eee" rx="8" />
+  <text class="pkg-title" x="50" y="90">Models</text>
+
+  <!-- Class: User -->
+  <rect class="class-box" x="60" y="120" width="180" height="110" />
+  <rect class="class-header" x="60" y="120" width="180" height="30" />
+  <text class="class-title" x="150" y="140">User</text>
+  <line class="line" x1="60" y1="150" x2="240" y2="150" />
+  <text class="class-text" x="70" y="165">+ name: String</text>
+  <text class="class-text" x="70" y="180">+ last_name: String</text>
+  <text class="class-text" x="70" y="195">+ phone: String</text>
+  <text class="class-text" x="70" y="210">+ email: String</text>
+  <line class="line" x1="60" y1="215" x2="240" y2="215" />
+  <text class="class-text" x="70" y="225">+ get_full_name()</text>
+
+  <!-- Class: Plan -->
+  <rect class="class-box" x="300" y="120" width="160" height="90" />
+  <rect class="class-header" x="300" y="120" width="160" height="30" />
+  <text class="class-title" x="380" y="140">Plan</text>
+  <line class="line" x1="300" y1="150" x2="460" y2="150" />
+  <text class="class-text" x="310" y="165">+ name: String</text>
+  <text class="class-text" x="310" y="180">+ price: float</text>
+  <line class="line" x1="300" y1="185" x2="460" y2="185" />
+  <text class="class-text" x="310" y="200">+ get_info()</text>
+
+  <!-- Class: VPSPlan -->
+  <rect class="class-box" x="300" y="260" width="160" height="90" />
+  <rect class="class-header" x="300" y="260" width="160" height="30" />
+  <text class="class-title" x="380" y="280">VPSPlan</text>
+  <line class="line" x1="300" y1="290" x2="460" y2="290" />
+  <text class="class-text" x="310" y="305">+ ram: int</text>
+  <text class="class-text" x="310" y="320">+ os: String</text>
+  <line class="line" x1="300" y1="325" x2="460" y2="325" />
+  <text class="class-text" x="310" y="340">+ set_os()</text>
+
+  <!-- Inheritance: VPSPlan -> Plan -->
+  <line class="line" x1="380" y1="260" x2="380" y2="210" marker-end="url(#inheritance)" />
+
+  <!-- Class: CartItem -->
+  <rect class="class-box" x="520" y="120" width="180" height="90" />
+  <rect class="class-header" x="520" y="120" width="180" height="30" />
+  <text class="class-title" x="610" y="140">CartItem</text>
+  <line class="line" x1="520" y1="150" x2="700" y2="150" />
+  <text class="class-text" x="530" y="165">+ plan: Plan</text>
+  <line class="line" x1="520" y1="170" x2="700" y2="170" />
+  <text class="class-text" x="530" y="185">+ get_info()</text>
+  <text class="class-text" x="530" y="200">+ get_price()</text>
+
+  <!-- Aggregation: CartItem -> Plan -->
+  <line class="line" x1="520" y1="165" x2="460" y2="165" marker-end="url(#aggregation)" />
+
+  <!-- Class: Cart -->
+  <rect class="class-box" x="520" y="260" width="180" height="120" />
+  <rect class="class-header" x="520" y="260" width="180" height="30" />
+  <text class="class-title" x="610" y="280">Cart</text>
+  <line class="line" x1="520" y1="290" x2="700" y2="290" />
+  <text class="class-text" x="530" y="305">+ items: List&lt;CartItem&gt;</text>
+  <line class="line" x1="520" y1="315" x2="700" y2="315" />
+  <text class="class-text" x="530" y="330">+ add_item()</text>
+  <text class="class-text" x="530" y="345">+ remove_item()</text>
+  <text class="class-text" x="530" y="360">+ get_total()</text>
+
+  <!-- Composition: Cart -> CartItem -->
+  <line class="line" x1="610" y1="260" x2="610" y2="210" marker-end="url(#composition)" />
+
+  <!-- Class: Invoice -->
+  <rect class="class-box" x="60" y="260" width="180" height="90" />
+  <rect class="class-header" x="60" y="260" width="180" height="30" />
+  <text class="class-title" x="150" y="280">Invoice</text>
+  <line class="line" x1="60" y1="290" x2="240" y2="290" />
+  <text class="class-text" x="70" y="305">+ user: User</text>
+  <text class="class-text" x="70" y="320">+ cart: Cart</text>
+  <line class="line" x1="60" y1="325" x2="240" y2="325" />
+  <text class="class-text" x="70" y="340">+ generate()</text>
+
+  <!-- Composition: Invoice -> User & Invoice -> Cart -->
+  <!-- Invoice -> User -->
+  <line class="line" x1="150" y1="260" x2="150" y2="230" marker-end="url(#composition)" />
+  <!-- Invoice -> Cart -->
+  <path class="line" d="M 240 305 L 520 305" marker-start="url(#composition)" />
+
+  <!-- UI & SERVICES & UTILS -->
+  <!-- Class: Main -->
+  <rect class="class-box" x="780" y="120" width="200" height="80" />
+  <rect class="class-header" x="780" y="120" width="200" height="30" />
+  <text class="class-title" x="880" y="140">Main</text>
+  <line class="line" x1="780" y1="150" x2="980" y2="150" />
+  <text class="class-text" x="790" y="165">+ run()</text>
+
+  <line class="arrow dashed" x1="780" y1="165" x2="700" y2="165" />
+  <text class="relation-text" x="720" y="160">&lt;&lt;usa&gt;&gt;</text>
+
+  <!-- Class: InputHandler -->
+  <rect class="class-box" x="780" y="260" width="260" height="100" />
+  <rect class="class-header" x="780" y="260" width="260" height="30" />
+  <text class="class-title" x="910" y="280">InputHandler</text>
+  <line class="line" x1="780" y1="290" x2="1040" y2="290" />
+  <text class="class-text" x="790" y="305">+ get_valid_input(..., func)</text>
+  <text class="class-text" x="790" y="320">+ get_valid_option(min, max)</text>
+  <text class="class-text" x="790" y="335">+ get_user_data()</text>
+
+  <!-- Class: Menu -->
+  <rect class="class-box" x="780" y="380" width="260" height="100" />
+  <rect class="class-header" x="780" y="380" width="260" height="30" />
+  <text class="class-title" x="910" y="400">Menu</text>
+  <line class="line" x1="780" y1="410" x2="1040" y2="410" />
+  <text class="class-text" x="790" y="425">+ main_menu(): String</text>
+  <text class="class-text" x="790" y="440">+ os_menu(): String</text>
+  <text class="class-text" x="790" y="455">+ get_os_name(): String</text>
+
+  <!-- Class: Validator -->
+  <rect class="class-box" x="780" y="520" width="260" height="90" />
+  <rect class="class-header" x="780" y="520" width="260" height="30" />
+  <text class="class-title" x="910" y="540">Validator</text>
+  <line class="line" x1="780" y1="550" x2="1040" y2="550" />
+  <text class="class-text" x="790" y="565">+ validate_name(str): bool</text>
+  <text class="class-text" x="790" y="580">+ validate_email(str): bool</text>
+  <text class="class-text" x="790" y="595">+ validate_phone(str): bool</text>
+
+  <!-- Class: PlanFactory -->
+  <rect class="class-box" x="300" y="520" width="250" height="80" />
+  <rect class="class-header" x="300" y="520" width="250" height="30" />
+  <text class="class-title" x="425" y="540">PlanFactory</text>
+  <line class="line" x1="300" y1="550" x2="550" y2="550" />
+  <text class="class-text" x="310" y="565">+ get_vps_plans(): List&lt;VPSPlan&gt;</text>
+
+  <!-- Dependencies -->
+  <line class="arrow dashed" x1="880" y1="200" x2="880" y2="260" />
+  <text class="relation-text" x="890" y="235">&lt;&lt;usa&gt;&gt;</text>
+
+  <line class="arrow dashed" x1="910" y1="360" x2="910" y2="520" />
+  <text class="relation-text" x="915" y="480">&lt;&lt;usa&gt;&gt;</text>
+
+  <path class="arrow dashed" d="M 780 160 Q 425 160 425 520" />
+  <text class="relation-text" x="435" y="480">Main &lt;&lt;usa&gt;&gt; Factory</text>
+</svg>

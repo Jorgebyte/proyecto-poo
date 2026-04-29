@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <style>
+      .pkg-body { fill: #fdfdfd; stroke: #2c3e50; stroke-width: 2; rx: 4; }
+      .pkg-tab { fill: #fdfdfd; stroke: #2c3e50; stroke-width: 2; rx: 2; }
+      .pkg-title { font: bold 14px sans-serif; fill: #2c3e50; }
+      .pkg-content { font: 12px monospace; fill: #34495e; }
+      .line { stroke: #2c3e50; stroke-width: 1.5; fill: none; }
+      .dependency { stroke: #7f8c8d; stroke-width: 1.5; stroke-dasharray: 6,4; fill: none; marker-end: url(#arrowhead); }
+      .dependency-text { font: italic 12px sans-serif; fill: #7f8c8d; text-anchor: middle; }
+      .main-title { font: bold 16px sans-serif; fill: #2c3e50; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7f8c8d" />
+    </marker>
+  </defs>
+
+  <rect width="800" height="600" fill="#ffffff" />
+  
+  <text class="main-title" x="40" y="40">Diagrama de Paquetes (UML) - Hosting VPS</text>
+  
+  <!-- Root Package (Main) -->
+  <g transform="translate(300, 80)">
+    <rect class="pkg-tab" x="0" y="0" width="70" height="20" />
+    <rect class="pkg-body" x="0" y="18" width="200" height="80" />
+    <text class="pkg-title" x="10" y="14">Root</text>
+    <text class="pkg-content" x="15" y="45">+ main.py</text>
+    <text class="pkg-content" x="15" y="65">  (Ejecución principal)</text>
+  </g>
+
+  <!-- UI Package -->
+  <g transform="translate(100, 240)">
+    <rect class="pkg-tab" x="0" y="0" width="60" height="20" />
+    <rect class="pkg-body" x="0" y="18" width="180" height="90" />
+    <text class="pkg-title" x="10" y="14">ui</text>
+    <text class="pkg-content" x="15" y="45">+ menu.py</text>
+    <text class="pkg-content" x="15" y="65">+ input_handler.py</text>
+  </g>
+
+  <!-- Services Package -->
+  <g transform="translate(520, 240)">
+    <rect class="pkg-tab" x="0" y="0" width="80" height="20" />
+    <rect class="pkg-body" x="0" y="18" width="180" height="90" />
+    <text class="pkg-title" x="10" y="14">services</text>
+    <text class="pkg-content" x="15" y="45">+ plan_factory.py</text>
+    <text class="pkg-content" x="15" y="65">  (Creación de planes)</text>
+  </g>
+
+  <!-- Utils Package -->
+  <g transform="translate(100, 420)">
+    <rect class="pkg-tab" x="0" y="0" width="60" height="20" />
+    <rect class="pkg-body" x="0" y="18" width="180" height="80" />
+    <text class="pkg-title" x="10" y="14">utils</text>
+    <text class="pkg-content" x="15" y="45">+ validator.py</text>
+  </g>
+
+  <!-- Models Package -->
+  <g transform="translate(520, 420)">
+    <rect class="pkg-tab" x="0" y="0" width="70" height="20" />
+    <rect class="pkg-body" x="0" y="18" width="200" height="120" />
+    <text class="pkg-title" x="10" y="14">models</text>
+    <text class="pkg-content" x="15" y="45">+ user.py</text>
+    <text class="pkg-content" x="15" y="65">+ plan.py</text>
+    <text class="pkg-content" x="15" y="85">+ cart.py</text>
+    <text class="pkg-content" x="15" y="105">+ invoice.py</text>
+  </g>
+
+  <!-- Dependencies -->
+  <!-- Root -> UI -->
+  <line class="dependency" x1="330" y1="178" x2="220" y2="240" />
+  <text class="dependency-text" x="250" y="200">&lt;&lt;import&gt;&gt;</text>
+
+  <!-- Root -> Services -->
+  <line class="dependency" x1="470" y1="178" x2="580" y2="240" />
+  <text class="dependency-text" x="555" y="200">&lt;&lt;import&gt;&gt;</text>
+  
+  <!-- Root -> Models -->
+  <line class="dependency" x1="400" y1="178" x2="400" y2="210" />
+  <line class="dependency" x1="400" y1="210" x2="450" y2="210" />
+  <line class="dependency" x1="450" y1="210" x2="580" y2="420" />
+  <text class="dependency-text" x="420" y="320">Main.py usa Models</text>
+
+  <!-- UI -> Utils -->
+  <line class="dependency" x1="190" y1="348" x2="190" y2="420" />
+  <text class="dependency-text" x="230" y="380">&lt;&lt;import&gt;&gt;</text>
+
+  <!-- Services -> Models -->
+  <line class="dependency" x1="610" y1="348" x2="610" y2="420" />
+  <text class="dependency-text" x="650" y="380">&lt;&lt;import&gt;&gt;</text>
+</svg>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <style>
+      .system-box { fill: #fcfcfc; stroke: #2c3e50; stroke-width: 2; rx: 10; }
+      .actor-circle { fill: #ecf0f1; stroke: #2c3e50; stroke-width: 2; }
+      .use-case-ellipse { fill: #e8ecef; stroke: #34495e; stroke-width: 1.5; }
+      .use-case-text { font: 12px sans-serif; fill: #2c3e50; text-anchor: middle; }
+      .line { stroke: #2c3e50; stroke-width: 1.5; fill: none; }
+      .dashed-line { stroke: #7f8c8d; stroke-width: 1.5; stroke-dasharray: 5,5; fill: none; marker-end: url(#arrowhead); }
+      .relation-label { font: italic 11px sans-serif; fill: #7f8c8d; text-anchor: middle; }
+      .title { font: bold 16px sans-serif; fill: #2c3e50; }
+      .actor-text { font: bold 14px sans-serif; fill: #2c3e50; text-anchor: middle; }
+      .box-title { font: bold 14px sans-serif; fill: #34495e; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7f8c8d" />
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="800" height="600" fill="#ffffff" />
+  
+  <text class="title" x="40" y="40">Diagrama de Casos de Uso (UML) - Hosting VPS</text>
+  
+  <!-- Sistema Boundaries -->
+  <rect class="system-box" x="250" y="70" width="450" height="500" />
+  <text class="box-title" x="410" y="100">Sistema Venta de Hosting VPS</text>
+  
+  <!-- Actor: Cliente -->
+  <!-- Cabecita -->
+  <circle cx="100" cy="250" r="15" class="actor-circle" />
+  <!-- Cuerpo -->
+  <line class="line" x1="100" y1="265" x2="100" y2="310" />
+  <!-- Brazos -->
+  <line class="line" x1="100" y1="280" x2="60" y2="290" />
+  <line class="line" x1="100" y1="280" x2="140" y2="290" />
+  <!-- Piernas -->
+  <line class="line" x1="100" y1="310" x2="80" y2="350" />
+  <line class="line" x1="100" y1="310" x2="120" y2="350" />
+  <text class="actor-text" x="100" y="375">Cliente</text>
+  
+  <!-- Use Cases -->
+  <!-- UC1: Ingresar Datos -->
+  <ellipse class="use-case-ellipse" cx="475" cy="150" rx="90" ry="30" />
+  <text class="use-case-text" x="475" y="155">Registrar Datos Personales</text>
+
+  <!-- UC2: Ver Cátalogo VPS -->
+  <ellipse class="use-case-ellipse" cx="370" cy="240" rx="90" ry="30" />
+  <text class="use-case-text" x="370" y="245">Ver Catálogo de VPS/OS</text>
+
+  <!-- UC3: Adicionar Carrito -->
+  <ellipse class="use-case-ellipse" cx="600" cy="240" rx="80" ry="30" />
+  <text class="use-case-text" x="600" y="245">Añadir al Carrito</text>
+
+  <!-- UC4: Ver Carrito -->
+  <ellipse class="use-case-ellipse" cx="475" cy="330" rx="80" ry="30" />
+  <text class="use-case-text" x="475" y="335">Ver Carrito</text>
+
+  <!-- UC5: Eliminar Producto -->
+  <ellipse class="use-case-ellipse" cx="475" cy="420" rx="80" ry="30" />
+  <text class="use-case-text" x="475" y="425">Eliminar Producto</text>
+
+  <!-- UC6: Generar Factura -->
+  <ellipse class="use-case-ellipse" cx="475" cy="510" rx="90" ry="30" />
+  <text class="use-case-text" x="475" y="515">Finalizar Compra</text>
+
+  <!-- Asociaciones (Líneas sólidas) -->
+  <line class="line" x1="150" y1="280" x2="385" y2="150" />
+  <line class="line" x1="150" y1="280" x2="280" y2="240" />
+  <line class="line" x1="150" y1="280" x2="395" y2="330" />
+  <line class="line" x1="150" y1="280" x2="395" y2="420" />
+  <line class="line" x1="150" y1="280" x2="385" y2="510" />
+
+  <!-- Dependencias (Includes / Extends) -->
+  <!-- Include: Añadir al carrito incluye el catálogo -->
+  <line class="dashed-line" x1="520" y1="240" x2="460" y2="240" />
+  <text class="relation-label" x="490" y="230">&lt;&lt;include&gt;&gt;</text>
+
+  <!-- Extend: Eliminar requiere ver el carrito -->
+  <line class="dashed-line" x1="475" y1="390" x2="475" y2="360" />
+  <text class="relation-label" x="500" y="380">&lt;&lt;extend&gt;&gt;</text>
+
+</svg>

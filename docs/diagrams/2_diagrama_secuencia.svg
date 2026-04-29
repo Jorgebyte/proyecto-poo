@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700">
+  <defs>
+    <style>
+      .msg-line { stroke: #2c3e50; stroke-width: 1.5; marker-end: url(#arrowhead); }
+      .return-line { stroke: #2c3e50; stroke-width: 1.5; stroke-dasharray: 4,4; marker-end: url(#arrowhead); }
+      .lifeline { stroke: #95a5a6; stroke-width: 1.5; stroke-dasharray: 5,5; }
+      .actor-box { fill: #ecf0f1; stroke: #2c3e50; stroke-width: 2; rx: 4; }
+      .actor-text { font: bold 13px sans-serif; fill: #2c3e50; text-anchor: middle; }
+      .msg-text { font: 12px sans-serif; fill: #34495e; }
+      .alt-box { fill: none; stroke: #bdc3c7; stroke-width: 1; }
+      .alt-text { font: italic 11px sans-serif; fill: #7f8c8d; }
+      .title { font: bold 16px sans-serif; fill: #7f8c8d; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50" />
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="700" fill="#ffffff" />
+  
+  <text class="title" x="40" y="40">Diagrama de Secuencia (UML) - Flujo Principal de Compra de Hosting</text>
+  
+  <!-- Actor y Objetos -->
+  <rect class="actor-box" x="50" y="70" width="100" height="40" />
+  <text class="actor-text" x="100" y="95">Cliente</text>
+  
+  <rect class="actor-box" x="250" y="70" width="100" height="40" />
+  <text class="actor-text" x="300" y="95">:Main</text>
+  
+  <rect class="actor-box" x="450" y="70" width="100" height="40" />
+  <text class="actor-text" x="500" y="95">:InputHandler</text>
+  
+  <rect class="actor-box" x="650" y="70" width="100" height="40" />
+  <text class="actor-text" x="700" y="95">:Models/Items</text>
+  
+  <!-- Lineas de Vida -->
+  <line class="lifeline" x1="100" y1="110" x2="100" y2="650" />
+  <line class="lifeline" x1="300" y1="110" x2="300" y2="650" />
+  <line class="lifeline" x1="500" y1="110" x2="500" y2="650" />
+  <line class="lifeline" x1="700" y1="110" x2="700" y2="650" />
+  
+  <!-- Secuencia -->
+  <!-- Start -->
+  <line class="msg-line" x1="100" y1="140" x2="300" y2="140" />
+  <text class="msg-text" x="150" y="135">run()</text>
+  
+  <!-- Recabar datos -->
+  <line class="msg-line" x1="300" y1="170" x2="500" y2="170" />
+  <text class="msg-text" x="350" y="165">get_user_data()</text>
+  
+  <!-- Validaciones -->
+  <rect x="80" y="180" width="460" height="60" class="alt-box" />
+  <text class="alt-text" x="85" y="195">loop por cada campo (correo, etc.)</text>
+  
+  <line class="msg-line" x1="500" y1="200" x2="100" y2="200" />
+  <text class="msg-text" x="250" y="195">Pide datos al usuario (input)</text>
+  
+  <line class="msg-line" x1="100" y1="230" x2="500" y2="230" />
+  <text class="msg-text" x="250" y="225">Ingresa datos del usuario</text>
+  
+  <line class="return-line" x1="500" y1="260" x2="300" y2="260" />
+  <text class="msg-text" x="320" y="255">return name, email, phone...</text>
+  
+  <!-- Crear Usuario y Cart -->
+  <line class="msg-line" x1="300" y1="290" x2="700" y2="290" />
+  <text class="msg-text" x="520" y="285">new User() / new Cart()</text>
+  
+  <!-- Loop Menú -->
+  <rect x="80" y="320" width="670" height="280" class="alt-box" />
+  <text class="alt-text" x="85" y="335">loop hasta elegir "4. Finalizar compra"</text>
+  
+  <line class="msg-line" x1="300" y1="360" x2="500" y2="360" />
+  <text class="msg-text" x="350" y="355">main_menu() (Muestra Opciones)</text>
+  
+  <line class="msg-line" x1="100" y1="390" x2="300" y2="390" />
+  <text class="msg-text" x="150" y="385">Elige "1. Comprar VPS"</text>
+  
+  <line class="msg-line" x1="300" y1="420" x2="700" y2="420" />
+  <text class="msg-text" x="520" y="415">get_vps_plans() (PlanFactory)</text>
+  
+  <line class="msg-line" x1="300" y1="450" x2="500" y2="450" />
+  <text class="msg-text" x="330" y="445">Muestra Menú OS (os_menu())</text>
+  
+  <line class="msg-line" x1="100" y1="480" x2="300" y2="480" />
+  <text class="msg-text" x="150" y="475">Elige OS (Ej. Debian)</text>
+  
+  <line class="msg-line" x1="300" y1="510" x2="700" y2="510" />
+  <text class="msg-text" x="380" y="505">cart.add_item( CartItem(VPSPlan) )</text>
+  
+  <line class="msg-line" x1="100" y1="550" x2="300" y2="550" />
+  <text class="msg-text" x="150" y="545">Elige "4. Finalizar compra"</text>
+  
+  <line class="msg-line" x1="300" y1="580" x2="700" y2="580" />
+  <text class="msg-text" x="420" y="575">new Invoice(User, Cart).generate()</text>
+  
+  <line class="return-line" x1="300" y1="620" x2="100" y2="620" />
+  <text class="msg-text" x="150" y="615">Muestra ticket de compra</text>
+
+</svg>
